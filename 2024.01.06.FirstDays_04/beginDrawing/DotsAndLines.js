@@ -70,7 +70,7 @@ function main() {
   }
 
   // Specify the color for clearing <canvas>: (Northwestern purple)
-  gl.clearColor(78/255, 42/255, 132/255 , 1.0);	// R,G,B,A (A==opacity)
+  gl.clearColor(255/255, 20/255, 147/255 , 1.0);	// R,G,B,A (A==opacity)
   // NOTE: 0.0 <= RGBA <= 1.0 
   // others to try:
   // gl.clearColor(0.0, 0.0 ,0.0, 1.0);
@@ -104,15 +104,32 @@ function initVertexBuffers(gl) {
 //==============================================================================
 // first, create a JavaScript typed array with all our vertex attribute values:
   var vertices = new Float32Array([
-     0.0,  0.5, 0.0, 1.0,	// CAREFUL! I made these into 4D points/ vertices: x,y,z,w.
-    -0.2,  0.0, 0.0, 1.0,	// new point!  (? What happens if I make w=0 instead of 1.0?)
-    -0.5, -0.5, 0.0, 1.0, // new point! (note we need a trailing commas here)  
-     0.0, -0.2, 0.0, 1.0, 	
-     0.5, -0.5, 0.0, 1.0,	
-     0.2,  0.0, 0.0, 1.0, 
+    //  0.0,  0.5, 0.0, 1.0,	// CAREFUL! I made these into 4D points/ vertices: x,y,z,w.
+    // -0.2,  0.0, 0.0, 1.0,	// new point!  (? What happens if I make w=0 instead of 1.0?)
+    // -0.5, -0.5, 0.0, 1.0, // new point! (note we need a trailing commas here)  
+    //  0.0, -0.2, 0.0, 1.0, 	
+    //  0.5, -0.5, 0.0, 1.0,	
+    //  0.2,  0.0, 0.0, 1.0, 
+     
+      1,  0,  0, 1,
+      0, -1,  0, 1,
+     -1,  0,  0, 1,
+      0,  1,  0, 1, 
+      0,  0,  1, 1, 
+      0,  0, -1, 1, 
+
+     // DUPLICATE VERTICES TO AID IN DRAWING COMPLETE LINES
+     -1,  0,  0, 1,
+      0,  1,  0, 1, 
+      1,  0,  0, 1,
+      0,  0, -1, 1,
+      0, -1,  0, 1,
+      
+
      
   ]);
-  var n = 6; // The number of vertices
+
+  var n = 6 + 5; // The number of vertices (6) + the number of duplicate vertices (5)
 
   // Then in the GPU, create a vertex buffer object (VBO) to hold vertex data:
   var VBOloc = gl.createBuffer();	// get it's 'handle'
