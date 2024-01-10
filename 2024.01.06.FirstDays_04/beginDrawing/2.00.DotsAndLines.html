@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Draw Dots & Lines</title>
+  </head>
+	Our first use of a VBO on the GPU! </br>
+	Each vertex has just 1 attribute: position(x,y,z,w).</br>
+	?Can you change the position of a point on this drawing? </br>
+	?Can you change the background color? or the green drawing color? </br>
+	?Can you change the size of the points? </br>
+	?Can you add more points to this drawing ? </br>
+	?Can you add a ‘u_color’ uniform var to change only the dot color? </br>
+
+  <body onload="main()">
+    <canvas id="HTML5_Canvas" width="470" height="470">
+    Please use a browser that supports "canvas"
+    </canvas>
+
+    <script src="lib/webgl-utils.js"></script>	<!-- 3 JS libraries for WebGL, -->
+    <script src="lib/webgl-debug.js"></script>
+    <script src="lib/cuon-utils.js"></script>
+
+    <script src="DotsAndLines.js"></script> 	<!-- and at last, our own JS program file. -->
+  </body>
+</html>
